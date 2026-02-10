@@ -1,3 +1,4 @@
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -19,11 +20,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
+        const navLinks = document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            });
+        });
+        
+        // Mobile dropdown toggle
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
             });
         });
     }
@@ -111,18 +136,31 @@ document.addEventListener('DOMContentLoaded', function() {
                         menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 }
+                
+                // Close dropdowns
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
     });
     
     // Highlight active navigation link based on current page
     const currentPage = window.location.pathname.split('/').pop();
-    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navLinks = document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)');
     
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href');
         if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
             link.classList.add('active');
+            
+            // Also highlight parent dropdown if this is a services page
+            if (currentPage.includes('windows') || currentPage.includes('doors') || currentPage === 'siding.html') {
+                const dropdownToggle = document.querySelector('.dropdown-toggle');
+                if (dropdownToggle) {
+                    dropdownToggle.classList.add('active');
+                }
+            }
         } else {
             link.classList.remove('active');
         }
