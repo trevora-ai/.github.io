@@ -18,18 +18,30 @@
         <div class="container">
             <nav class="navbar">
                 <a href="index.html" class="logo">
-                    <img src="images/logo.png" alt="Residential Home Solutions Logo" width="180" height="50">
+                    <img src="images/logo.png" alt="Residential Home Solutions Logo" width="320" height="90">
                 </a>
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
                     <i class="fas fa-bars"></i>
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li class="dropdown">
+                        <a href="#services" class="dropdown-toggle active">
+                            Services <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="windows-patio-doors.html">Windows & Patio Doors</a></li>
+                            <li><a href="entry-storm-doors.html">Entry & Storm Doors</a></li>
+                            <li><a href="siding.html" class="active">Siding</a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="testimonials.html" class="active">Testimonials</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
                     <li><a href="contact.html" class="nav-cta">Free Quote</a></li>
                 </ul>
+                <div class="hardie-header-logo">
+                    <img src="images/infinitylogo.png" alt="InfinitybyMarvin Contractor" class="partner-logo-img">
+                </div>
             </nav>
         </div>
     </header>
