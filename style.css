@@ -1280,7 +1280,7 @@ img {
 /* ===== FOOTER ===== */
 .footer {
     background-color: var(--off-white);
-    color: var(--white);
+    color: var(--dark);
     padding: 80px 0 30px;
 }
 
