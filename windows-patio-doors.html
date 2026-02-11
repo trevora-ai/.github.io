@@ -11,6 +11,199 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        /* Additional styles for the dropdowns and logos */
+        .provider-logo-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .provider-logo {
+            max-width: 200px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .learn-more-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .learn-more-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--white);
+            min-width: 250px;
+            box-shadow: var(--shadow-hover);
+            z-index: 1000;
+            border-radius: var(--radius);
+            padding: 15px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .learn-more-dropdown:hover .learn-more-dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .learn-more-dropdown-content a {
+            color: var(--dark);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+        
+        .learn-more-dropdown-content a:hover {
+            background-color: rgba(0, 51, 102, 0.05);
+            color: var(--secondary);
+        }
+        
+        .learn-more-dropdown-content a i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .window-type-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .window-type-content {
+            display: none;
+            position: absolute;
+            background-color: var(--white);
+            min-width: 280px;
+            box-shadow: var(--shadow-hover);
+            z-index: 1000;
+            border-radius: var(--radius);
+            padding: 15px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            left: 0;
+            top: 100%;
+        }
+        
+        .window-type-dropdown:hover .window-type-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .window-type-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .window-type-item:hover {
+            background-color: rgba(0, 51, 102, 0.05);
+        }
+        
+        .window-type-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 51, 102, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .window-type-info {
+            flex: 1;
+        }
+        
+        .window-type-info h6 {
+            margin: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .window-type-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .stock-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: var(--light-gray);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            color: var(--gray);
+        }
+        
+        .gallery-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-top: 15px;
+        }
+        
+        .gallery-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .provider-card {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .provider-logo-container {
+                height: 150px;
+            }
+            
+            .provider-logo {
+                max-width: 180px;
+                max-height: 80px;
+            }
+            
+            .learn-more-dropdown-content,
+            .window-type-content {
+                position: static;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                display: none;
+                width: 100%;
+            }
+            
+            .learn-more-dropdown:hover .learn-more-dropdown-content,
+            .window-type-dropdown:hover .window-type-content {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header & Navigation -->
@@ -77,12 +270,12 @@
                         <h4 style="color: var(--primary); margin-bottom: 15px;">Why Choose Our Window Partners?</h4>
                         <p>We carefully select window manufacturers based on quality craftsmanship, energy efficiency, and local availability. As your trusted window experts, we provide:</p>
                         <ul style="columns: 2; column-gap: 40px; margin-top: 20px;">
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Energy Star Certified products</li>
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Local manufacturing when available</li>
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Custom sizing and configurations</li>
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Industry-leading warranties</li>
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Professional installation</li>
-                            <li><i class="fas fa-check-circle" style="color: var(--success);"></i> Lifetime service support</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Energy Star Certified products</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Local manufacturing when available</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Custom sizing and configurations</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Industry-leading warranties</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Professional installation</li>
+                            <li><i class="fas fa-check-circle" style="color: #27ae60;"></i> Lifetime service support</li>
                         </ul>
                     </div>
                     
@@ -92,12 +285,13 @@
                         
                         <!-- Infinity by Marvin -->
                         <div class="provider-card" style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-bottom: 60px; padding: 30px; background-color: var(--light); border-radius: var(--radius); align-items: center;">
-                            <div style="text-align: center;">
-                                <div style="background-color: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow);">
-                                    <i class="fas fa-infinity" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Infinity by Marvin</h4>
-                                    <p style="font-size: 0.9rem; color: var(--gray);">Ultimate Replacement Windows</p>
+                            <div>
+                                <div class="provider-logo-container">
+                                    <img src="images/infinity-logo.png" alt="Infinity by Marvin" class="provider-logo">
                                 </div>
+                                <a href="gallery-infinity.html" class="gallery-link">
+                                    <i class="fas fa-images"></i> View Infinity Gallery
+                                </a>
                             </div>
                             <div>
                                 <h4 style="color: var(--primary); margin-bottom: 15px;">Infinity by Marvin</h4>
@@ -105,7 +299,7 @@
                                 
                                 <div class="provider-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
                                     <div style="display: flex; align-items: center; gap: 10px;">
-                                        <i class="fas fa-leaf" style="color: var(--success);"></i>
+                                        <i class="fas fa-leaf" style="color: #27ae60;"></i>
                                         <span>Superior Energy Efficiency</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -122,26 +316,49 @@
                                     </div>
                                 </div>
                                 
-                                <div style="margin-top: 20px;">
+                                <div style="margin-top: 20px;" class="learn-more-dropdown">
                                     <a href="https://www.infinitywindows.com/" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
                                         <i class="fas fa-external-link-alt"></i> Learn More About Infinity Windows
                                     </a>
+                                    <div class="learn-more-dropdown-content">
+                                        <a href="gallery-infinity.html#double-hung">
+                                            <span>Double-Hung Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-infinity.html#casement">
+                                            <span>Casement Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-infinity.html#sliding">
+                                            <span>Sliding Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-infinity.html#patio-doors">
+                                            <span>Patio Doors</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-infinity.html">
+                                            <span>View All Products</span>
+                                            <i class="fas fa-images"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- ProVia Windows -->
                         <div class="provider-card" style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-bottom: 60px; padding: 30px; background-color: var(--light); border-radius: var(--radius); align-items: center;">
-                            <div style="text-align: center;">
-                                <div style="background-color: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow);">
-                                    <i class="fas fa-gem" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>ProVia Windows</h4>
-                                    <p style="font-size: 0.9rem; color: var(--gray);">ProVia</p>
+                            <div>
+                                <div class="provider-logo-container">
+                                    <img src="images/provia-logo.png" alt="ProVia Windows" class="provider-logo">
                                 </div>
+                                <a href="gallery-provia.html" class="gallery-link">
+                                    <i class="fas fa-images"></i> View ProVia Gallery
+                                </a>
                             </div>
                             <div>
-                                <h4 style="color: var(--primary); margin-bottom: 15px;">Engineered for Excellence</h4>
-                                <p>ProVia windows are engineered with precision and built to perform. Known for their attention to detail and superior craftsmanship, ProVia offers exceptional energy efficiency and durability for Spokane Valley homes.</p>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">ProVia Windows & Doors</h4>
+                                <p>ProVia offers comprehensive solutions with both windows and doors. Their products are engineered with precision and built to perform, featuring exceptional energy efficiency and durability for Spokane Valley homes.</p>
                                 
                                 <div class="provider-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
                                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -162,25 +379,48 @@
                                     </div>
                                 </div>
                                 
-                                <div style="margin-top: 20px;">
+                                <div style="margin-top: 20px;" class="learn-more-dropdown">
                                     <a href="https://www.provia.com/windows/" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
-                                        <i class="fas fa-external-link-alt"></i> Explore ProVia Windows
+                                        <i class="fas fa-external-link-alt"></i> Explore ProVia Products
                                     </a>
+                                    <div class="learn-more-dropdown-content">
+                                        <a href="gallery-provia.html#windows">
+                                            <span>Windows</span>
+                                            <i class="fas fa-window-maximize"></i>
+                                        </a>
+                                        <a href="entry-storm-doors.html#provia">
+                                            <span>Entry Doors</span>
+                                            <i class="fas fa-door-open"></i>
+                                        </a>
+                                        <a href="entry-storm-doors.html#storm-doors">
+                                            <span>Storm Doors</span>
+                                            <i class="fas fa-wind"></i>
+                                        </a>
+                                        <a href="gallery-provia.html#patio-doors">
+                                            <span>Patio Doors</span>
+                                            <i class="fas fa-glass-martini-alt"></i>
+                                        </a>
+                                        <a href="gallery-provia.html">
+                                            <span>View All Products</span>
+                                            <i class="fas fa-images"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Coeur d'Alene Window -->
                         <div class="provider-card" style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-bottom: 60px; padding: 30px; background-color: var(--light); border-radius: var(--radius); align-items: center;">
-                            <div style="text-align: center;">
-                                <div style="background-color: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow);">
-                                    <i class="fas fa-mountain" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>Coeur d'Alene Window</h4>
-                                    <p style="font-size: 0.9rem; color: var(--gray);">Coeur d'Alene Widnow</p>
+                            <div>
+                                <div class="provider-logo-container">
+                                    <img src="images/cda-logo.png" alt="Coeur d'Alene Window" class="provider-logo">
                                 </div>
+                                <a href="gallery-cda.html" class="gallery-link">
+                                    <i class="fas fa-images"></i> View CDA Gallery
+                                </a>
                             </div>
                             <div>
-                                <h4 style="color: var(--primary); margin-bottom: 15px;">Local Manufacturing Excellence</h4>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">Coeur d'Alene Window Company</h4>
                                 <p>Coeur d'Alene Window Company represents the best of local Pacific Northwest craftsmanship. Their windows are specifically designed for our regional climate and built to withstand the unique weather challenges of Eastern Washington and Northern Idaho.</p>
                                 
                                 <div class="provider-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
@@ -202,25 +442,48 @@
                                     </div>
                                 </div>
                                 
-                                <div style="margin-top: 20px;">
+                                <div style="margin-top: 20px;" class="learn-more-dropdown">
                                     <a href="https://www.coeurdalenewindow.com/" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
-                                        <i class="fas fa-external-link-alt"></i> Discover Coeur d'Alene Windows
+                                        <i class="fas fa-external-link-alt"></i> Discover CDA Windows
                                     </a>
+                                    <div class="learn-more-dropdown-content">
+                                        <a href="gallery-cda.html#single-hung">
+                                            <span>Single-Hung Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-cda.html#double-hung">
+                                            <span>Double-Hung Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-cda.html#picture">
+                                            <span>Picture Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-cda.html#custom">
+                                            <span>Custom Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-cda.html">
+                                            <span>View All Products</span>
+                                            <i class="fas fa-images"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- VPI Quality Windows -->
                         <div class="provider-card" style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-bottom: 60px; padding: 30px; background-color: var(--light); border-radius: var(--radius); align-items: center;">
-                            <div style="text-align: center;">
-                                <div style="background-color: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow);">
-                                    <i class="fas fa-star" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px;"></i>
-                                    <h4>VPI Quality Windows</h4>
-                                    <p style="font-size: 0.9rem; color: var(--gray);">VPI Quality Windows</p>
+                            <div>
+                                <div class="provider-logo-container">
+                                    <img src="images/vpi-logo.png" alt="VPI Quality Windows" class="provider-logo">
                                 </div>
+                                <a href="gallery-vpi.html" class="gallery-link">
+                                    <i class="fas fa-images"></i> View VPI Gallery
+                                </a>
                             </div>
                             <div>
-                                <h4 style="color: var(--primary); margin-bottom: 15px;">Engineered for Durability</h4>
+                                <h4 style="color: var(--primary); margin-bottom: 15px;">VPI Quality Windows</h4>
                                 <p>VPI Quality Windows offers superior engineering and construction designed for long-term performance. Their windows feature innovative technologies that provide exceptional energy efficiency, security, and durability for Pacific Northwest homes.</p>
                                 
                                 <div class="provider-features" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
@@ -242,59 +505,265 @@
                                     </div>
                                 </div>
                                 
-                                <div style="margin-top: 20px;">
+                                <div style="margin-top: 20px;" class="learn-more-dropdown">
                                     <a href="https://www.vpiqualitywindows.com/windows" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
                                         <i class="fas fa-external-link-alt"></i> View VPI Quality Windows
                                     </a>
+                                    <div class="learn-more-dropdown-content">
+                                        <a href="gallery-vpi.html#double-hung">
+                                            <span>Double-Hung Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-vpi.html#casement">
+                                            <span>Casement Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-vpi.html#awning">
+                                            <span>Awning Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-vpi.html#sliding">
+                                            <span>Sliding Windows</span>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                        <a href="gallery-vpi.html">
+                                            <span>View All Products</span>
+                                            <i class="fas fa-images"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Window Types Grid -->
+                    <!-- Window Types Grid with Stock Images -->
                     <div class="window-types-section" style="margin: 60px 0;">
                         <h3 style="text-align: center; margin-bottom: 40px;">Our Window & Patio Door Selection</h3>
                         
                         <div class="types-grid" style="margin: 30px 0;">
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-square"></i>
                                 <h5>Double-Hung Windows</h5>
                                 <p>Classic vertical sliding windows for traditional appeal and easy cleaning</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-square"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Double-Hung Windows</h6>
+                                            <p>Traditional style with both sashes operable</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-window-maximize"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Single-Hung Windows</h6>
+                                            <p>Only bottom sash opens, cost-effective option</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-window-restore"></i>
                                 <h5>Casement Windows</h5>
                                 <p>Hinged windows that open outward for maximum ventilation and energy efficiency</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-window-restore"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Casement Windows</h6>
+                                            <p>Side-hinged windows that crank open</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Awning Windows</h6>
+                                            <p>Top-hinged windows for ventilation in rain</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-sliders-h"></i>
                                 <h5>Sliding Windows</h5>
                                 <p>Horizontal sliding windows perfect for modern homes and tight spaces</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-sliders-h"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Sliding Windows</h6>
+                                            <p>Horizontal sliding operation</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-expand-alt"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Picture Windows</h6>
+                                            <p>Fixed windows for unobstructed views</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-expand-alt"></i>
                                 <h5>Picture Windows</h5>
                                 <p>Fixed windows for unobstructed views and maximum natural light</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-expand-alt"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Picture Windows</h6>
+                                            <p>Fixed, non-opening windows</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-shapes"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Custom Shapes</h6>
+                                            <p>Architectural and specialty windows</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-glass-martini-alt"></i>
                                 <h5>Patio Doors</h5>
                                 <p>Sliding and French doors for seamless indoor-outdoor living</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-glass-martini-alt"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Sliding Patio Doors</h6>
+                                            <p>Space-saving sliding operation</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-door-open"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>French Patio Doors</h6>
+                                            <p>Classic hinged double doors</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-bay-window"></i>
                                 <h5>Bay & Bow Windows</h5>
                                 <p>Create additional space and architectural interest</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-bay-window"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Bay Windows</h6>
+                                            <p>Angled projection with 3+ windows</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-archway"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Bow Windows</h6>
+                                            <p>Curved projection with 4+ windows</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-sun"></i>
                                 <h5>Awning Windows</h5>
                                 <p>Top-hinged windows ideal for ventilation during light rain</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-sun"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Awning Windows</h6>
+                                            <p>Top-hinged outward opening</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-fan"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Hopper Windows</h6>
+                                            <p>Bottom-hinged inward opening</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="type-item">
+                            <div class="type-item window-type-dropdown">
                                 <i class="fas fa-shapes"></i>
                                 <h5>Custom Shapes</h5>
                                 <p>Custom-sized and shaped windows for unique architectural needs</p>
+                                <div class="stock-image-placeholder">
+                                    <i class="fas fa-image fa-3x"></i>
+                                </div>
+                                <div class="window-type-content">
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-circle"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Round & Oval Windows</h6>
+                                            <p>Circular and oval shaped windows</p>
+                                        </div>
+                                    </div>
+                                    <div class="window-type-item">
+                                        <div class="window-type-icon">
+                                            <i class="fas fa-hexagon"></i>
+                                        </div>
+                                        <div class="window-type-info">
+                                            <h6>Geometric Windows</h6>
+                                            <p>Triangles, hexagons, and custom shapes</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -453,5 +922,28 @@
 
     <!-- JavaScript -->
     <script src="script.js"></script>
+    <script>
+        // Ensure current year is displayed in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Mobile dropdown functionality
+        document.querySelectorAll('.window-type-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    const content = this.querySelector('.window-type-content');
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.learn-more-dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    const content = this.querySelector('.learn-more-dropdown-content');
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
