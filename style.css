@@ -223,6 +223,7 @@ img {
     display: flex;
     gap: 25px;
     align-items: center;
+    padding-left: 60px;
 }
 
 .nav-menu li {
