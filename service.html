@@ -494,8 +494,8 @@
     <section class="service-repair-header">
         <div class="container">
             <div class="header-content">
-                <span class="service-tag"><i class="fas fa-wrench"></i> Existing home service & repairs</span>
-                <h1 style="font-size: 2.9rem; font-family: 'Merriweather', serif; color: #123d47; margin-bottom: 15px; max-width: 900px;">Already have our products? <br>Need a part, adjustment, or service?</h1>
+
+                <h1 style="font-size: 2.9rem; font-family: 'Merriweather', serif; color: var(--primary); margin-bottom: 15px; max-width: 900px;">Already have our products? <br>Need a part, adjustment, or service?</h1>
                 <p style="font-size: 1.3rem; color: #2b5668; max-width: 750px; margin-bottom: 5px;">Fast, local service for windows, doors, patio doors, storm doors, and siding components. Same-week options available.</p>
                 <div style="display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 25px;">
                     <span style="background: #174a47; color: white; padding: 8px 25px; border-radius: 60px; font-weight: 600;"><i class="fas fa-gear"></i> Replacement parts</span>
@@ -512,19 +512,14 @@
             <!-- LEFT COLUMN - BENEFITS & INFO -->
             <div class="service-left-column">
                 <div class="repair-benefits">
-                    <h3>We fix what we build — and more.</h3>
+                    <h3>If we installed it, we can fix it!</h3>
                     <p style="font-size: 1.1rem; color: #235b66; margin-bottom: 20px;">Genuine parts, experienced techs, no-pressure service.</p>
                     <ul class="parts-list">
-                        <li><i class="fas fa-check-circle"></i> Window sashes, balances, locks</li>
-                        <li><i class="fas fa-check-circle"></i> Patio door rollers, handles, screens</li>
+                        <li><i class="fas fa-check-circle"></i> Window glass, balancers, operation issues</li>
+                        <li><i class="fas fa-check-circle"></i> Patio door parts, handles</li>
                         <li><i class="fas fa-check-circle"></i> Entry door hardware, hinges, weatherstrip</li>
-                        <li><i class="fas fa-check-circle"></i> Storm door pistons, closers, glass</li>
-                        <li><i class="fas fa-check-circle"></i> Siding panels, trim, J-channel</li>
-                        <li><i class="fas fa-check-circle"></i> Foggy glass / seal replacement</li>
+                        <li><i class="fas fa-check-circle"></i> Storm door pistons, closers</li>
                     </ul>
-                    <div class="service-alert">
-                        <i class="fas fa-lightbulb" style="color: #c96b2c;"></i> <strong>Don't replace the whole unit — often just a $35 part fixes it.</strong> We'll diagnose and give you options.
-                    </div>
                 </div>
                 
                 <div style="background: #174a47; border-radius: 28px; padding: 32px; color: white;">
@@ -544,7 +539,7 @@
                     <i class="fas fa-clipboard-check" style="color: #1b7c5c;"></i> Request part / service
                 </div>
                 <div class="form-sub">
-                    <i class="fas fa-info-circle"></i> Already a customer or product installed? Tell us what needs attention.
+                    <i class="fas fa-info-circle"></i> Tell us what needs serviced.
                 </div>
                 
                 <form id="serviceRepairForm" novalidate>
@@ -598,26 +593,6 @@
                         <div id="productTypeError" style="color: #d5433a; font-size: 0.85rem; margin-top: 5px; display: none;"></div>
                     </div>
 
-                    <!-- SPECIFIC ISSUE -->
-                    <div class="form-row">
-                        <label><i class="fas fa-screwdriver"></i> What needs to be serviced / replaced? *</label>
-                        <select class="form-select" id="serviceIssue" required>
-                            <option value="" selected disabled>Select most urgent issue</option>
-                            <option value="Broken handle / lock">Broken handle / lock</option>
-                            <option value="Roller / track — door hard to slide">Roller / track — door hard to slide</option>
-                            <option value="Storm door closer / piston">Storm door closer / piston</option>
-                            <option value="Foggy glass / seal failure">Foggy glass / seal failure</option>
-                            <option value="Cracked or broken glass">Cracked or broken glass</option>
-                            <option value="Screen repair / replacement">Screen repair / replacement</option>
-                            <option value="Weatherstrip / draft">Weatherstrip / draft</option>
-                            <option value="Siding panel replacement">Siding panel replacement</option>
-                            <option value="Hinge adjustment / door sag">Hinge adjustment / door sag</option>
-                            <option value="Multi-point lock not engaging">Multi-point lock not engaging</option>
-                            <option value="Other part / hardware">Other part / hardware</option>
-                        </select>
-                        <div class="error-message" style="color: #d5433a; font-size: 0.85rem; margin-top: 5px; display: none;"></div>
-                    </div>
-
                     <!-- DESCRIPTION -->
                     <div class="form-row">
                         <label><i class="fas fa-pen"></i> Describe the issue & part needed (if known) *</label>
@@ -635,29 +610,7 @@
                             <label style="display: flex; align-items: center; gap: 8px;">
                                 <input type="radio" name="original_install" value="no"> No / not sure
                             </label>
-                            <label style="display: flex; align-items: center; gap: 8px;">
-                                <input type="radio" name="original_install" value="other"> Other brand
-                            </label>
                         </div>
-                    </div>
-
-                    <!-- PREFERRED TIME -->
-                    <div class="form-row">
-                        <label><i class="fas fa-calendar-alt"></i> When do you need service?</label>
-                        <select class="form-select" id="serviceTime">
-                            <option>As soon as possible (we'll call to schedule)</option>
-                            <option>This week</option>
-                            <option>Next week</option>
-                            <option>Just need part — I'll pick up/install</option>
-                        </select>
-                    </div>
-
-                    <!-- WARRANTY CHECKBOX -->
-                    <div class="warranty-checkbox">
-                        <label style="display: flex; align-items: flex-start; gap: 12px; font-weight: 400;">
-                            <input type="checkbox" id="warrantyCheck" checked style="width: 18px; height: 18px; margin-top: 2px;">
-                            <span style="font-size: 0.98rem;">Check if still under warranty — we'll verify and save you money if covered.</span>
-                        </label>
                     </div>
 
                     <!-- PHOTO UPLOAD -->
@@ -676,17 +629,9 @@
                     <button type="submit" class="btn-service" id="submitBtn">
                         <i class="fas fa-paper-plane"></i> Submit service request
                     </button>
-                    <p style="font-size: 0.88rem; color: #3f6872; margin-top: 15px; display: flex; gap: 10px; align-items: center;">
-                        <i class="fas fa-shield"></i> No overtime charge • We bring common parts • Free diagnostic with approved repair
-                    </p>
                 </form>
-                
-                <div class="service-footer-callout">
-                    <span><i class="fas fa-tools"></i> <strong>Need a replacement part only?</strong></span>
-                    <a href="tel:15098926460" style="background: #174a47; color: white; padding: 10px 22px; border-radius: 60px; text-decoration: none; font-weight: 600;">Call for parts counter <i class="fas fa-arrow-right"></i></a>
-                </div>
                 <div class="emergency-note">
-                    <i class="fas fa-truck-fast"></i> <strong>Emergency service? Broken glass or inoperable door?</strong> Call us directly: <a href="tel:15098926460" style="font-weight: 700; color: #1d4e4a;">(509) 892-6460</a> — we prioritize safety repairs.
+                    <i class="fas fa-truck-fast"></i> <strong>Emergency service? Security issue? Broken glass or inoperable door?</strong> Call us directly: <a href="tel:15098926460" style="font-weight: 700; color: #1d4e4a;">(509) 892-6460</a> — we prioritize safety repairs.
                 </div>
             </div>
         </div>
