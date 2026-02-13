@@ -369,3 +369,29 @@ function handlePageSpecificFeatures() {
         });
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    let currentPage = window.location.pathname.split("/").pop();
+
+    if (currentPage === "") {
+        currentPage = "index.html";
+    }
+
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+    navLinks.forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+
+            const dropdown = link.closest(".dropdown");
+            if (dropdown) {
+                const toggle = dropdown.querySelector(".dropdown-toggle");
+                if (toggle) {
+                    toggle.classList.add("active");
+                }
+            }
+        }
+    });
+
+});
